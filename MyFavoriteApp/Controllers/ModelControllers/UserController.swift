@@ -55,5 +55,37 @@ class UserController {
     }
     
     //POST request(create)
+    func postUser(name: String, favoriteApp: String, completion: @escaping (Bool) -> Void) {
+        
+        //Build a URL
+        guard var url = baseUrl else {completion(false); return}
+        url.appendPathComponent("users")
+        url.appendPathExtension("json")
+        //Create a request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        //request.httpBody = JSON.encoded data.
+        let newUser = User(name: name, favoriteApp: favoriteApp)
+        //Encode the data. Set the httpBody.
+        do {
+          let data = try JSONEncoder().encode(newUser)
+            request.httpBody = data
+        } catch {
+            print("There was an error in \(#function): \(error) \(error.localizedDescription)")
+            completion(false)
+            return
+        }
+        //Call the data task.
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                print("\(error.localizedDescription) \(error) in function: \(#function)")
+                completion(false)
+                return
+            }
+            self.users.append(newUser)
+            completion(true)
+        } .resume()
+        
+    }
     
 }
