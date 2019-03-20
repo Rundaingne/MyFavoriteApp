@@ -17,5 +17,4 @@ struct User: Codable {
         case name
         case favoriteApp = "favApp"
     }
-    
 }

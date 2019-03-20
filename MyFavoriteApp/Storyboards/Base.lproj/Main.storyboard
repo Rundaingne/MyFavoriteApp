@@ -12,7 +12,7 @@
         <!--My Favorite App-->
         <scene sceneID="uZk-tF-WiG">
             <objects>
-                <tableViewController id="scn-hC-iHI" sceneMemberID="viewController">
+                <tableViewController id="scn-hC-iHI" customClass="UserTableViewController" customModule="MyFavoriteApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zfw-NF-RL6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Favorite App" id="M17-LY-NxJ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tz6-Ba-c29"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tz6-Ba-c29">
+                            <connections>
+                                <action selector="addPostButtonTapped:" destination="scn-hC-iHI" id="UW3-iC-lJW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmA-U3-2L3" userLabel="First Responder" sceneMemberID="firstResponder"/>
